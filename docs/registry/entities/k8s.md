@@ -321,7 +321,7 @@ conflict.
 | Description | [`k8s.storageclass.name`](/docs/registry/attributes/k8s.md) | ![Development](https://img.shields.io/badge/-development-blue) | `Recommended` | string | The name of K8s [StorageClass](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.34/#storageclass-v1-storage-k8s-io) object. | `gold.storageclass.storage.k8s.io` |
 | Description | [`k8s.persistentvolume.annotation.<key>`](/docs/registry/attributes/k8s.md) | ![Development](https://img.shields.io/badge/-development-blue) | `Opt-In` | string | The annotation placed on the PersistentVolume, the `<key>` being the annotation name, the value being the annotation value, even if the value is empty. [19] | `kubernetes.io/aws-ebs`; `` |
 | Description | [`k8s.persistentvolume.label.<key>`](/docs/registry/attributes/k8s.md) | ![Development](https://img.shields.io/badge/-development-blue) | `Opt-In` | string | The label placed on the PersistentVolume, the `<key>` being the label name, the value being the label value, even if the value is empty. [20] | `ssd`; `` |
-| Description | [`k8s.persistentvolume.reclaim_policy`](/docs/registry/attributes/k8s.md) | ![Development](https://img.shields.io/badge/-development-blue) | `Opt-In` | string | The reclaim policy of the PersistentVolume. [21] | `Delete`; `Retain`; `Recycle` |
+| Description | [`k8s.persistentvolume.reclaim_policy`](/docs/registry/attributes/k8s.md) | ![Development](https://img.shields.io/badge/-development-blue) | `Opt-In` | string | The reclaim policy of the PersistentVolume. [21] | `Delete`; `Retain`; `Recycle` [(see more)](#k8s-persistentvolume-reclaim-policy-values) |
 
 **[19] `k8s.persistentvolume.annotation.<key>`:** Examples:
 
@@ -341,6 +341,8 @@ conflict.
 [K8s PersistentVolumeSpec](https://kubernetes.io/docs/reference/kubernetes-api/config-and-storage-resources/persistent-volume-v1/#PersistentVolumeSpec).
 
 ---
+
+<a id="k8s-persistentvolume-reclaim-policy-values"></a>
 
 `k8s.persistentvolume.reclaim_policy` has the following list of well-known values. If one of them applies, then the respective value MUST be used; otherwise, a custom value MAY be used.
 
@@ -512,7 +514,7 @@ in ISO 8601 (RFC 3339 compatible) format.
 | --- | --- | --- | --- | --- | --- | --- |
 | Identity | [`k8s.service.uid`](/docs/registry/attributes/k8s.md) | ![Development](https://img.shields.io/badge/-development-blue) | `Recommended` | string | The UID of the Service. | `275ecb36-5aa8-4c2a-9c47-d8bb681b9aff` |
 | Description | [`k8s.service.name`](/docs/registry/attributes/k8s.md) | ![Development](https://img.shields.io/badge/-development-blue) | `Recommended` | string | The name of the Service. | `my-service` |
-| Description | [`k8s.service.type`](/docs/registry/attributes/k8s.md) | ![Development](https://img.shields.io/badge/-development-blue) | `Recommended` | string | The type of the Kubernetes Service. [31] | `ClusterIP`; `NodePort`; `LoadBalancer` |
+| Description | [`k8s.service.type`](/docs/registry/attributes/k8s.md) | ![Development](https://img.shields.io/badge/-development-blue) | `Recommended` | string | The type of the Kubernetes Service. [31] | `ClusterIP`; `NodePort`; `LoadBalancer` [(see more)](#k8s-service-type-values) |
 | Description | [`k8s.service.annotation.<key>`](/docs/registry/attributes/k8s.md) | ![Development](https://img.shields.io/badge/-development-blue) | `Opt-In` | string | The annotation placed on the Service, the `<key>` being the annotation name, the value being the annotation value, even if the value is empty. [32] | `true`; `` |
 | Description | [`k8s.service.label.<key>`](/docs/registry/attributes/k8s.md) | ![Development](https://img.shields.io/badge/-development-blue) | `Opt-In` | string | The label placed on the Service, the `<key>` being the label name, the value being the label value, even if the value is empty. [33] | `my-service`; `` |
 | Description | [`k8s.service.publish_not_ready_addresses`](/docs/registry/attributes/k8s.md) | ![Development](https://img.shields.io/badge/-development-blue) | `Opt-In` | boolean | Whether the Service publishes not-ready endpoints. [34] | `true`; `false` |
@@ -560,6 +562,8 @@ If this field is not set on the Service, the attribute SHOULD NOT be emitted.
 When not set, Kubernetes distributes traffic evenly across all endpoints cluster-wide.
 
 ---
+
+<a id="k8s-service-type-values"></a>
 
 `k8s.service.type` has the following list of well-known values. If one of them applies, then the respective value MUST be used; otherwise, a custom value MAY be used.
 
